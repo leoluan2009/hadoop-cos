@@ -845,7 +845,7 @@ public class CosNFileSystem extends FileSystem {
         LOG.info("Opening '" + f + "' for reading");
         Path absolutePath = makeAbsolute(f);
         String key = pathToKey(absolutePath);
-        return new FSDataInputStream(new BufferedFSInputStream(
+        return new FSDataInputStream(new CosNFSBufferedFSInputStream(
                 new CosNFSInputStream(this.getConf(), nativeStore, statistics, key,
                         fileStatus.getLen(), this.boundedIOThreadPool),
                 bufferSize));
